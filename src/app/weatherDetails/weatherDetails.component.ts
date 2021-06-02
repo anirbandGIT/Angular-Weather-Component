@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class WeatherDetails implements OnInit {
   @Input() weatherData: data[];
+  searchText = "";
   data: data;
 
   ngOnInit() {
@@ -20,9 +21,10 @@ export class WeatherDetails implements OnInit {
 
   fetchWeather(event): void {
     // console.log(event.target.value);
+    this.searchText = event.target.value
     this.data = null;
     this.weatherData.forEach((element: data) => {
-      if (element.name.toLowerCase() === event.target.value.toLowerCase()) {
+      if (element.name.toLowerCase() === this.searchText.toLowerCase()) {
         this.data = element;
         return;
       }
