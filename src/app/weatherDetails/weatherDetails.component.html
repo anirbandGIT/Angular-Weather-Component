@@ -8,7 +8,7 @@
 
   <section class="mt-20 layout-row align-items-center justify-content-center">
     <div class="card outlined">
-      <div *ngIf="data !== null" data-test-id="weather-details"
+      <div *ngIf="data !== undefined && data !== null" data-test-id="weather-details"
         class="card-text pt-10 layout-row justify-content-between">
         <div class="mt-20 outlined">
           <button class="icon-only mx-2">
@@ -25,7 +25,8 @@
           </div>
         </div>
       </div>
-      <div *ngIf="data === null" data-test-id="no-results" class="card-text">No Results Found</div>
+      <div *ngIf="data !== undefined && data === null" data-test-id="no-results" class="card-text">No Results Found
+      </div>
     </div>
   </section>
 </div>

@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class WeatherDetails implements OnInit {
   @Input() weatherData: data[];
-  data: data = null;
+  data: data;
 
   ngOnInit() {
     // [{
