@@ -6,33 +6,25 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./weatherDetails.component.scss"],
 })
 export class WeatherDetails implements OnInit {
-  @Input() weatherData: data[];
+  @Input() weatherData: WeatherData[];
   searchText = "";
-  data: data;
+  filteredWeatherData: WeatherData;
 
-  ngOnInit() {
-    // [{
-    //     "name": "San Jose",
-    //     "temperature": "36º F",
-    //     "wind": "31Kmph",
-    //     "humidity": "66%"
-    //   }]
-  }
+  ngOnInit() {}
 
   fetchWeather(event): void {
-    // console.log(event.target.value);
-    this.searchText = event.target.value
-    this.data = null;
-    this.weatherData.forEach((element: data) => {
+    this.searchText = event.target.value;
+    this.filteredWeatherData = null;
+    this.weatherData.forEach((element: WeatherData) => {
       if (element.name.toLowerCase() === this.searchText.toLowerCase()) {
-        this.data = element;
+        this.filteredWeatherData = element;
         return;
       }
     });
   }
 }
 
-interface data {
+interface WeatherData {
   name: string;
   temperature: string;
   wind: string;
